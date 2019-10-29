@@ -1,0 +1,43 @@
+<div class="container custom-container-2">
+
+<!-- Show it when there is no book -->
+<div class="no-data text-center">
+  <p  *ngIf="books.length == 0">There is no book added yet!</p>
+  <button class="btn btn-outline-primary" routerLink="/create-book">Add Book</button>
+</div>
+
+<!-- Book list table, it hides when there is no book -->
+<div *ngIf="books.length !== 0">
+  <h3 class="mb-3 text-center">Book List</h3>
+
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+                <th scope="col">Book Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of books">
+                <td>{{book.id}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.description}}</td>
+                <td>{{book.price}}</td>
+                <td>{{book.qty}}</td>
+                <td><a routerLink="/update-book/{{book.id}}"><i class="fas fa-edit"></i></a></td>
+                <td><a (click)="deleteBook(book.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+              </tr>
+            </tbody>
+    </table>
+                
+        </div>
+          
+  </div>
+          
+</div>
